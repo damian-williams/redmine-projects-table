@@ -23,7 +23,8 @@
 
 <% content_for :header_tags do %>
   <%= stylesheet_link_tag 'projects', :plugin => 'projects_table' %>
-  <%= javascript_include_tag 'jquery.treegrid.js', :plugin => 'projects_table' %>
+  <%= javascript_include_tag 'jquery-1.11.2.min.js', :plugin => 'projects_table' %>
+  <%= javascript_include_tag 'jquery.treegrid.js', :plugin => 'projects_table' %>  
   <%= stylesheet_link_tag 'jquery.treegrid.css', :plugin => 'projects_table' %>
   <%= javascript_tag "$('.tree').treegrid();", :plugin => 'projects_table' %>
 <% end %>
