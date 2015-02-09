@@ -1,4 +1,12 @@
-<table class="list projects">
+<script type="text/javascript" src="javascripts/jquery.js"></script>
+<script type="text/javascript" src="javascripts/jquery.treegrid.js"></script>
+<link rel="stylesheet" href="css/jquery.treegrid.css">
+
+<script type="text/javascript">
+  $('.tree').treegrid();
+</script>  
+
+<table class="list projects tree">  
   <thead>
     <tr>
       <th><%= t :field_name %></th>
@@ -7,7 +15,7 @@
   </thead>
   <tbody>
     <% project_tree(projects) do |project, level| %>
-      <tr class="<%= cycle('odd', 'even') %> <%= project.css_classes %> <%= level > 0 ? "idnt idnt-#{level}" : nil %>">
+      <tr class="<%= cycle('odd', 'even') %> <%= project.css_classes %> <%= level > 0 ? "treegrid-#{level+1} treegrid-parent-#{level-1}" : "treegrid-1" %>">
         <td class="name">
           <span>
             <%= link_to_project(project, {}, :class => "#{project.css_classes} #{User.current.member_of?(project) ? 'my-project' : nil}") %>
