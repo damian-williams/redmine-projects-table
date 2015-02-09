@@ -1,11 +1,3 @@
-<script type="text/javascript" src="javascripts/jquery.js"></script>
-<script type="text/javascript" src="javascripts/jquery.treegrid.js"></script>
-<link rel="stylesheet" href="css/jquery.treegrid.css">
-
-<script type="text/javascript">
-  $('.tree').treegrid();
-</script>  
-
 <table class="list projects tree">  
   <thead>
     <tr>
@@ -31,4 +23,8 @@
 
 <% content_for :header_tags do %>
   <%= stylesheet_link_tag 'projects', :plugin => 'projects_table' %>
+  <%= javascript_link_tag 'jquery', :plugin => 'projects_table' %>
+  <%= javascript_link_tag 'jquery.treegrid', :plugin => 'projects_table' %>
+  <%= stylesheet_link_tag 'jquery.treegrid', :plugin => 'projects_table' %>
+  <%= javascript_tag "$('.tree').treegrid();", :plugin => 'projects_table' %>
 <% end %>
