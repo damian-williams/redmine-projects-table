@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <% project_tree(projects) do |project, level| %>
-      <tr class="<%= cycle('odd', 'even') %> <%= project.css_classes %> <%= level > 0 ? "treegrid-#{level+1} treegrid-parent-#{level-1}" : "treegrid-1" %>">
+      <tr class="<%= cycle('odd', 'even') %> <%= project.css_classes %> <%= level > 0 ? "treegrid-#{level+1} treegrid-parent-#{level}" : "treegrid-1" %>">
         <td class="name">
           <span>
             <%= link_to_project(project, {}, :class => "#{project.css_classes} #{User.current.member_of?(project) ? 'my-project' : nil}") %>
