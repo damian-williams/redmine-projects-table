@@ -6,15 +6,17 @@
     </tr>
   </thead>
   <tbody>
-    <% project_tree(projects) do |project, level| %>
-      <tr class="<%= cycle('odd', 'even') %> <%= project.css_classes %> <%= level > 0 ? "treegrid-#{level+1} treegrid-parent-#{level}" : "treegrid-1" %>">
+    <% i = 0 
+    project_tree(projects) do |project, level| 
+      i += 1 %>
+      <tr class="<%= cycle('odd', 'even') %> <%= project.css_classes %> <%= level > 0 ? "treegrid-#{i} treegrid-parent-1" : "treegrid-#{i}" %>">
         <td class="name">
           <span>
             <%= link_to_project(project, {}, :class => "#{project.css_classes} #{User.current.member_of?(project) ? 'my-project' : nil}") %>
           </span>
         </td>
         <td class="wiki description">
-          <%= textilizable(project.short_description, :project => project) if project.description.present? %>
+          <%= textilizable(project.short_descrip tion, :project => project) if project.description.present? %>
         </td>
       </tr>
     <% end %>
@@ -26,5 +28,5 @@
   <%= javascript_include_tag 'jquery-1.11.2.min.js', :plugin => 'projects_table' %>
   <%= javascript_include_tag 'jquery.treegrid.js', :plugin => 'projects_table' %>  
   <%= stylesheet_link_tag 'jquery.treegrid.css', :plugin => 'projects_table' %>
-  <%= javascript_tag "$('.tree').treegrid();", :plugin => 'projects_table' %>
+  <%= javascript_tag "$(document).ready(function() {$('.tree').treegrid({ treeColumn: 5 });};)", :plugin => 'projects_table' %>
 <% end %>
